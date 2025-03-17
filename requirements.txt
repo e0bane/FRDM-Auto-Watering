@@ -5,3 +5,5 @@ Reports the moister level using led and segment display.
 Rods should connect the board to the soil.
 
 waters soil if the soil's moister level is too low.
+
+Can set the 'too low' level via the FRDM's built-in buttons.
