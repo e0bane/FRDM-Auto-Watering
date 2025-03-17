@@ -1,0 +1,7 @@
+Can monitor the moister levels of the soil.
+
+Reports the moister level using led and segment display.
+
+Rods should connect the board to the soil.
+
+waters soil if the soil's moister level is too low.
