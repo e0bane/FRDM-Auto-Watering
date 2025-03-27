@@ -1,0 +1,15 @@
+"Task Aware Debugger for GDB" version 11.6.1 (202207200623)
+(c) 2016-2022 NXP Semiconductors, Inc.
+==================================
+21:40:52.697 INFO: [ZephyrRTOS] C:\Users\El-Hadji\Documents\GitHub\FRDM-Auto-Watering\FRDM-Auto-Watering\workspace\plant_manager\Debug\.config file could not be read
+21:40:52.699 INFO: [TadModel] DSF session ID 13 has started.
+21:41:01.721 INFO: [TadState] TAD state changed: DEBUG_STARTED -> DEBUG_INIT_0 (SUSPENDED, USER_REQUEST)
+21:41:05.142 INFO: [TadState] TAD state changed: DEBUG_INIT_0 -> DEBUG_INIT_1 (RESUMED, USER_REQUEST)
+21:41:05.206 INFO: [TadState] TAD state changed: DEBUG_INIT_1 -> DEBUG_SUSPENDED (SUSPENDED, BREAKPOINT)
+21:41:08.556 INFO: [TadState] TAD state changed: DEBUG_SUSPENDED -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+21:41:08.663 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, BREAKPOINT)
+21:41:13.715 INFO: [TadState] TAD state changed: READY -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+21:41:13.780 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, BREAKPOINT)
+21:41:24.03 INFO: [TadState] TAD state changed: READY -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+21:41:24.66 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, BREAKPOINT)
+21:44:18.265 INFO: [TadModel] DSF session ID 13 has ended.
