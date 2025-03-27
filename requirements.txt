@@ -1,13 +1,17 @@
 Can monitor the moister levels and temperature of the soil.
 
-Reports the moister level using green led and segment display.
-
 Rods should connect the board to the soil.
 
 waters soil if the soil's moister level is too low.
 
-Can set the 'too low' level via the FRDM's built-in buttons.
+Can change the 'too low' level and temperature threshold via the FRDM's built-in touchpad.
+
+Can finalize a set value using the right built-in button.
+
+Can switch between setting 'too low' level and temperature threshold using the left built-in button.
+
+If 6 seconds pass after the user changes the set values and the 'confirm button' isn't pressed, the displayed values return to it's values before the user changed it.
+
+Reports the moister level using green led and segment display.
 
 Alerts when temperature is within dangerous levels using red light.
-
-Can set the temperature threshold via built-in buttons.

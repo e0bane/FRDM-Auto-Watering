@@ -40,13 +40,16 @@
 #include "MKL46Z4.h"
 #include "fsl_debug_console.h"
 /* TODO: insert other include files here. */
+#include "manager_consts.h"
 
 /* TODO: insert other definitions and declarations here. */
+void btns_init(void);
+void leds_init(void);
+double get_moister_lvl(const int PIN);
 
 /*
  * @brief   Application entry point.
  */
-void btn1_init(void);
 
 int main(void) {
 
@@ -59,28 +62,70 @@ int main(void) {
     BOARD_InitDebugConsole();
 #endif
 
+    btns_init();  // btn setup
+    leds_init();  // leds setup
+
     PRINTF("Hello World\n");
-    btn1_init();
-    /* Force the counter to be placed into memory. */
-    volatile static int i = 0 ;
-    /* Enter an infinite loop, just incrementing a counter. */
+
+    volatile static int i = 0;
     while(1) {
         i++ ;
-        /* 'Dummy' NOP to allow source level single stepping of
-            tight while() loop */
+        if ((GPIOC->PDIR & (1 << PTC_SELECTION_BTN_PIN)) == 0)
+        {
+        	printf("select pressed. Temp LED on\n");
+        	GPIOE->PCOR |= (1<<PTE_TEMPURATURE_LED);
+        	GPIOD->PSOR |= (1<<PTD_MOISTER_LED);
+        }
+        else if((GPIOC->PDIR & (1 << PTC_CONFIRM_BTN_PIN)) == 0)
+        {
+        	printf("confirm pressed. moister LED on\n");
+        	GPIOE->PSOR |= (1<<PTE_TEMPURATURE_LED);
+        	GPIOD->PCOR |= (1<<PTD_MOISTER_LED);
+        }
+        else
+        {
+        	GPIOE->PSOR |= (1<<PTE_TEMPURATURE_LED);
+        	GPIOD->PSOR |= (1<<PTD_MOISTER_LED);
+        }
+
         __asm volatile ("nop");
-        GPIOC->PDIR;
     }
     return 0 ;
 }
 
-void btn1_init()
-{
-	SIM->SCGC5 |= (1 << 11);
 
-	PORTC->PCR[3] &= ~0x700;
-	PORTC->PCR[3] |= (1 << 8);
-	GPIOC->PDDR &= ~(1<<3);
-	PORTC->PCR[3] |= (1<<1);
-	PORTC->PCR[3] |= (1<<0);
+void btns_init()
+{
+	SIM->SCGC5 |= (1 << 11);  // portC enable
+
+	// btn1
+	PORTC->PCR[PTC_CONFIRM_BTN_PIN] &= ~0x700;  // clr mux
+	PORTC->PCR[PTC_CONFIRM_BTN_PIN] |= (1 << 8);  // set mux to GPIO
+	GPIOC->PDDR &= ~(1<<PTC_CONFIRM_BTN_PIN);  // set PTC pin to input
+	PORTC->PCR[PTC_CONFIRM_BTN_PIN] |= (1<<1);  // enable pull resistor
+	PORTC->PCR[PTC_CONFIRM_BTN_PIN] |= (1<<0);  // enable pulldown
+
+	// btn2
+	PORTC->PCR[PTC_SELECTION_BTN_PIN] &= ~0x700;  // clr mux
+	PORTC->PCR[PTC_SELECTION_BTN_PIN] |= (1 << 8);  // set mux to GPIO
+	GPIOC->PDDR &= ~(1<<PTC_SELECTION_BTN_PIN);  // set PTC pin to input
+	PORTC->PCR[PTC_SELECTION_BTN_PIN] |= (1<<1);  // enable pull resistor
+	PORTC->PCR[PTC_SELECTION_BTN_PIN] |= (1<<0);  // enable pulldown
+}
+
+
+void leds_init()
+{
+	SIM->SCGC5 |= (1 << 13);  // portE enable
+	SIM->SCGC5 |= (1 << 12);  // portD enable
+
+	// LED1
+	PORTE->PCR[PTE_TEMPURATURE_LED] &= ~0x700;  // clr mux
+	PORTE->PCR[PTE_TEMPURATURE_LED] |= (1 << 8);  // set mux to GPIO
+	GPIOE->PDDR |= (1<<PTE_TEMPURATURE_LED);  // sets PTD pin to output
+
+	// LED2
+	PORTD->PCR[PTD_MOISTER_LED] &= ~0x700;  // clr mux
+	PORTD->PCR[PTD_MOISTER_LED] |= (1 << 8);  // set mux to GPIO
+	GPIOD->PDDR |= (1<<PTD_MOISTER_LED);  // sets PTD pin to output
 }

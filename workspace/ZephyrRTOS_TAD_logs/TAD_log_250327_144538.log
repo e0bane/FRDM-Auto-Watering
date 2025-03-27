@@ -1,0 +1,11 @@
+"Task Aware Debugger for GDB" version 11.6.1 (202207200623)
+(c) 2016-2022 NXP Semiconductors, Inc.
+==================================
+14:45:16.393 INFO: [ZephyrRTOS] C:\Users\El-Hadji\Documents\GitHub\FRDM-Auto-Watering\FRDM-Auto-Watering\workspace\plant_manager\Debug\.config file could not be read
+14:45:16.394 INFO: [TadModel] DSF session ID 13 has started.
+14:45:22.318 INFO: [TadState] TAD state changed: DEBUG_STARTED -> DEBUG_INIT_0 (SUSPENDED, USER_REQUEST)
+14:45:25.197 INFO: [TadState] TAD state changed: DEBUG_INIT_0 -> DEBUG_INIT_1 (RESUMED, USER_REQUEST)
+14:45:25.237 INFO: [TadState] TAD state changed: DEBUG_INIT_1 -> DEBUG_SUSPENDED (SUSPENDED, BREAKPOINT)
+14:45:28.335 INFO: [TadState] TAD state changed: DEBUG_SUSPENDED -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+14:45:36.505 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+14:45:38.576 INFO: [TadModel] DSF session ID 13 has ended.
